@@ -1,13 +1,11 @@
 {
-  "name": "ai-chatbot-local",
+  "name": "ai-chatbot-tfjs",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "fuse.js": "^6.6.2",
-    "natural": "^6.2.3"
+    "express": "^4.18.2"
   }
 }

@@ -1,6 +1,6 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #0f0f0f;
+  background: #121212;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -12,8 +12,8 @@ body {
   width: 400px;
   background: #1e1e1e;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 0 20px #00ffcc;
+  overflow: hidden;
 }
 
 #chat-box {
