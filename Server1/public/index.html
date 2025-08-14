@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Search Engine</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: rgb(0, 0, 0);
+      overflow: hidden;
+    }
+    #overlay {
+      position: absolute;
+      z-index: 2;
+      padding: 2rem;
+    }
+    input {
+      width: 300px;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+    input:focus {
+      box-shadow: 0 0 10px #00ffff;
+    }
+    .result {
+      margin-top: 1rem;
+      animation: fadeIn 0.5s ease;
+    }
+    .result a {
+      font-weight: bold;
+      color: #00ffff;
+      text-decoration: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div id="overlay">
+    <h1>Search the Web</h1>
+    <input type="text" id="searchBox" placeholder="Search..." />
+    <div id="results"></div>
+  </div>
+
+  <script type="module">
+    import * as THREE from 'https://cdn.skypack.dev/three';
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("bg") });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshStandardMaterial({ color: 0x00ffff, wireframe: true });
+    const torus = new THREE.Mesh(geometry, material);
+    scene.add(torus);
+
+    const light = new THREE.PointLight(0xffffff, 1);
+    light.position.set(20, 20, 20);
+    scene.add(light);
+
+    camera.position.z = 30;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      torus.rotation.x += 0.01;
+      torus.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+
+  <script>
+    const box = document.getElementById("searchBox");
+    const resultsDiv = document.getElementById("results");
+
+    box.addEventListener("input", async () => {
+      const query = box.value;
+      const res = await fetch(`/search?q=${encodeURIComponent(query)}`);
+      const results = await res.json();
+
+      resultsDiv.innerHTML = results.map(r => `
+        <div class="result">
+          <a href="${r.url}" target="_blank">${r.title}</a>
+          <p>${r.snippet}</p>
+        </div>
+      `).join("");
+    });
+  </script>
+</body>
+</html>
