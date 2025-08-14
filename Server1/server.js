@@ -3,7 +3,7 @@ const Fuse = require("fuse.js");
 const { getAllPages } = require("./db");
 
 const app = express();
-const PORT = 9992;
+const PORT = 9991;
 
 app.use(express.static("public"));
 app.use(express.json());
