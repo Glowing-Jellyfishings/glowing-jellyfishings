@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Local AI Chatbot</title>
+  <title>AI Chatbot</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,7 +14,22 @@
       <button type="submit">Send</button>
     </form>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.12.0/dist/tf.min.js"></script>
+
+  <div class="dashboard">
+    <h2>🧠 Train the Bot</h2>
+    <form id="train-form">
+      <input type="text" id="train-input" placeholder="Training phrase" />
+      <select id="train-label">
+        <option value="greeting">greeting</option>
+        <option value="status">status</option>
+        <option value="identity">identity</option>
+        <option value="joke">joke</option>
+        <option value="farewell">farewell</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

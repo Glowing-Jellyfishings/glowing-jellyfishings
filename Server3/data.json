@@ -1,0 +1,12 @@
+[
+  { "input": "hello", "label": "greeting" },
+  { "input": "hi", "label": "greeting" },
+  { "input": "hey", "label": "greeting" },
+  { "input": "how are you", "label": "status" },
+  { "input": "what is your name", "label": "identity" },
+  { "input": "who are you", "label": "identity" },
+  { "input": "tell me a joke", "label": "joke" },
+  { "input": "make me laugh", "label": "joke" },
+  { "input": "bye", "label": "farewell" },
+  { "input": "goodbye", "label": "farewell" }
+]
