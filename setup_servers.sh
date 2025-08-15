@@ -6,7 +6,7 @@ set -o pipefail
 # Optional: cache Git credentials for smoother loop
 git config --global credential.helper cache
 
-for i in {11..20}; do
+for i in {21..100}; do
   folder="Server$i"
   echo "🚀 Setting up $folder..."
 
