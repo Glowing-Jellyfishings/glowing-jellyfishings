@@ -22,7 +22,9 @@ exports.handleWebhook = (req, res) => {
     return res.status(401).send('Invalid signature');
   }
 
-  console.log('✅ Verified webhook event:', req.body);
+  // Sanitize user input before logging to prevent log injection
+  const sanitizedBody = JSON.stringify(req.body).replace(/[\n\r]/g, "");
+  console.log('✅ Verified webhook event:', sanitizedBody);
   // You can add custom logic here based on event type
   res.sendStatus(200);
 };
