@@ -1,30 +1,34 @@
 #!/bin/bash
 
-# Exit on error
-set -e
+set -e  # Exit on error
+set -o pipefail
 
-# Loop through Server11 to Server20
+# Optional: cache Git credentials for smoother loop
+git config --global credential.helper cache
+
 for i in {11..20}; do
   folder="Server$i"
-  echo "🔧 Creating $folder..."
+  echo "🚀 Setting up $folder..."
 
-  # Create folder and navigate into it
-  mkdir "$folder"
+  # Create and enter folder
+  mkdir -p "$folder"
   cd "$folder"
 
   # Initialize npm and install express
   npm init -y
   npm install express
 
-  # Stage and commit changes
+  # Stage and commit
   git add .
   git commit -m "Initialize $folder with Express"
 
   # Push changes
-  git push
+  git push || echo "⚠️ Push failed for $folder. Check remote or credentials."
 
   # Return to root
   cd ..
+
+  echo "✅ $folder setup complete."
 done
 
-echo "✅ All servers initialized and synced!"
+echo "🎉 All folders processed!"
