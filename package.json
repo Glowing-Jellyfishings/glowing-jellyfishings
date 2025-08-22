@@ -1,0 +1,23 @@
+{
+  "name": "glowing-jellyfishes",
+  "version": "1.0.0",
+  "description": "A modular, Node.js-powered homepage, built for real orchestration and frontend prototyping.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "homepage",
+    "modular",
+    "dashboard",
+    "orchestration",
+    "frontend"
+  ],
+  "author": "Glowing",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
