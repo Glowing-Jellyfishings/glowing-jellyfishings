@@ -5,8 +5,8 @@
   ],
   "routes": [
     { "src": "/", "dest": "/api/index.js" },
-    { "src": "/css/(.*)", "dest": "/public/css/$1" },
-    { "src": "/js/(.*)", "dest": "/public/js/$1" },
-    { "src": "/images/(.*)", "dest": "/public/images/$1" }
+    { "src": "/style.css", "dest": "/site/style.css" },
+    { "src": "/main.js", "dest": "/site/main.js" },
+    { "src": "/images/(.*)", "dest": "/site/images/$1" }
   ]
 }
